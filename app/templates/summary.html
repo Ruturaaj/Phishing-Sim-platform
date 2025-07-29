@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+    body {
+        background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+    }
+
+    h3 {
+        font-weight: 600;
+        color: #1a237e;
+    }
+
+    .btn-sm {
+        font-weight: 500;
+    }
+
+    .card-metric {
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .table th {
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .section-title {
+        margin-top: 40px;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2e3d49;
+        border-left: 4px solid #2196f3;
+        padding-left: 10px;
+    }
+</style>
+
+<h3 class="text-center mb-4">📊 Phishing Simulation Summary</h3>
+
+<!-- Export Buttons -->
+<div class="text-end mb-4">
+    <a href="{{ url_for('export_clicks') }}" class="btn btn-outline-primary btn-sm me-2">⬇️ Click Logs (CSV)</a>
+    <a href="{{ url_for('export_credentials') }}" class="btn btn-outline-warning btn-sm">⬇️ Credentials (CSV)</a>
+</div>
+
+<!-- Metrics -->
+<div class="row mb-5">
+    <div class="col-md-6">
+        <div class="card card-metric border-start border-primary border-4">
+            <div class="card-body text-center">
+                <h5 class="text-primary">🔗 Total Link Clicks</h5>
+                <h3>{{ click_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mt-3 mt-md-0">
+        <div class="card card-metric border-start border-warning border-4">
+            <div class="card-body text-center">
+                <h5 class="text-warning">🔐 Total Credentials Captured</h5>
+                <h3>{{ credential_count }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Click Logs Table -->
+<div class="section-title">🕵️ Clicked Links</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>IP Address</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in clicks %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ log.ip_address }}</td>
+                <td>{{ log.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Credential Logs Table -->
+<div class="section-title">🛡️ Captured Credentials</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in credentials %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ entry.email }}</td>
+                <td>{{ entry.password }}</td>
+                <td>{{ entry.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

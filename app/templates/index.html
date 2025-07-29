@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% block content %}
+<style>
+    /* Full-page background */
+    body {
+        background: linear-gradient(120deg, #dfe9f3 0%, #ffffff 100%);
+    }
+
+    .homepage-card {
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .homepage-card h2 {
+        font-weight: 600;
+        color: #2b3e50;
+    }
+
+    .homepage-description {
+        font-size: 17px;
+        color: #4a4a4a;
+        margin-bottom: 30px;
+    }
+
+    .btn-lg {
+        font-size: 16px;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 500;
+    }
+
+    .btn-outline-primary {
+        border-color: #4c8bf5;
+        color: #4c8bf5;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #4c8bf5;
+        color: white;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #ea4335;
+        color: white;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #34a853;
+        color: white;
+    }
+</style>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="homepage-card text-center">
+            <img src="https://www.gstatic.com/images/branding/product/1x/gmail_2020q4_48dp.png" alt="Logo" width="48" class="mb-3">
+            <h2 class="mb-3">Welcome to PhishingSim Lab</h2>
+            <p class="homepage-description">
+                Simulate ethical phishing campaigns, analyze awareness, and train users—all in a secure environment.
+            </p>
+
+            <div class="d-grid gap-3">
+                <a href="{{ url_for('send_email') }}" class="btn btn-outline-primary btn-lg">
+                    📧 Send Test Email
+                </a>
+                <a href="{{ url_for('fake_login') }}" class="btn btn-outline-danger btn-lg">
+                    🔐 Launch Phishing Page
+                </a>
+                <a href="{{ url_for('summary') }}" class="btn btn-outline-success btn-lg">
+                    📊 View Dashboard Summary
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

